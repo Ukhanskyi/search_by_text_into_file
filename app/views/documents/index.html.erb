@@ -1,0 +1,10 @@
+<%= form_for :document do |f| %>
+  <%= f.file_field :file %>
+  <%= f.submit %>
+<% end %>
+<% @documents.each do |d| %>
+  <hr>
+  <p>File: <%= d.file.identifier %></p>
+  <p>Text body: <%= d.text_body %></p>
+  <hr>
+<% end %>
