@@ -11,14 +11,16 @@
       <% end %>
     </div>
 
-    <% @documents.each do |d| %>
-      <div class='card my-2'>
-        <div class='card-body'>
-          <h5 class='card-title'> File: <%= d.file.identifier %> </h5>
-          <p class='card-text'> Text body: <%= d.text_body %> </p>
-        </div>
+    <div class='row'>
+      <div class='container my-3'>
+        <%= form_with url: search_documents_path do |f| %>
+          <div class='input-group'>
+            <%= f.text_field :query, placeholder: 'Search', class: 'form-control rounded' %>
+            <%= f.submit 'search', data: { disable_with: false }, class: 'btn btn-outline-primary' %>
+          </div>
+        <% end %>
+        <%= render 'search_results', documents: @documents %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
-

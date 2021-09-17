@@ -3,7 +3,7 @@
 # Class for documents
 class DocumentsController < ApplicationController
   def index
-    @documents = Document.all
+    @documents = collection
     @document = Document.new
   end
 
@@ -20,7 +20,23 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def search
+    @documents = collection
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   private
+
+  def search_params
+    params.permit(:query)
+  end
+
+  def collection
+    DocumentsSearch.new(query: search_params[:query]).search
+  end
 
   def document_params
     params.require(:document).permit(:file)
