@@ -9,7 +9,7 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new(document_params)
-    @document.text_body = ParseDocumentService.new(@document.file).parse_text_from_doc
+    @document.text_body = DocumentService.new(@document.file).parse_text
 
     respond_to do |format|
       if @document.save

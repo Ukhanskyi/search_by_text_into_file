@@ -33,6 +33,7 @@ gem 'carrierwave'
 gem 'chewy'
 gem 'henkei'
 gem 'redis'
+gem 'slim-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 
