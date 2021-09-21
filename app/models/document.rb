@@ -7,4 +7,6 @@ class Document < ApplicationRecord
   mount_uploader :file, FileUploader
 
   update_index('documents') { self }
+
+  validates :file, :text_body, presence: true
 end

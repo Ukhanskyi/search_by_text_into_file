@@ -15,7 +15,7 @@ class DocumentsController < ApplicationController
       if @document.save
         format.html { redirect_to root_path, notice: 'Document was successfully created.' }
       else
-        format.html { render :new }
+        format.html { raise 'Document wasn`t created.' }
       end
     end
   end
