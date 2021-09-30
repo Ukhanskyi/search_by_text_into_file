@@ -1,0 +1,14 @@
+#search_results.mt-3
+  - if documents.exists?
+    .container
+      .row.mt-2
+        - documents.each do |doc|
+          .card.my-2
+            .card-body
+              h4.card-title
+                | File: #{ Document.find(doc.id).file.identifier }
+              p.card-text
+                | Text body: #{ doc.text_body }
+  - else
+    p.text-center.lead
+      | Sorry, but nothing found =(

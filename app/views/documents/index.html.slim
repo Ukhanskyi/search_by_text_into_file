@@ -1,0 +1,18 @@
+.container.mt-4
+  .row
+    div
+      h2.text-center 
+        | Documents 
+    .container.d-flex.justify-content-center.m-3
+      = form_for :document, class: 'form-group mt-5' do |f|
+        p.d-inline.px-5 
+          | Please attach .doc, .docx or .pdf file
+        = f.file_field :file, class: 'form-control-file ml-3 mt-3'
+        = f.submit 'Save Document', class: 'btn btn-primary'
+    .row
+      .container.my-3
+        = form_with url: search_documents_path, class: 'mx-2 px-1' do |f|
+          .input-group
+            = f.text_field :query, placeholder: 'Search', class: 'form-control rounded'
+            = f.submit 'Search', data: { disable_with: false }, class: 'btn btn-outline-primary'
+        = render 'search_results', documents: @documents
